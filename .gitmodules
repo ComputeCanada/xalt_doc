@@ -1,0 +1,3 @@
+[submodule "xalt"]
+	path = xalt
+	url = https://github.com/xalt/xalt.git
