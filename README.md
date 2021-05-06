@@ -46,7 +46,7 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
 ## Notes
 * ~~On ne devrait probablement pas utiliser de reverse map, parce que le MODULEPATH peut être modifié et Lmod se fie au MODULEPATH pour créer la reverseMap~~ Les reverse maps de Lmod traversent tous les modulefiles et modifie le MODULEPATH. Pourrait aussi être utile pour Mii.
 * 2 moyens d'utiliser les reverse maps &rarr; regénérer une xalt_rmapT.json à chaque fois qu'on veut updater ou utiliser `$LMOD_DIR/update_lmod_system_cache_files` ([lien](https://xalt.readthedocs.io/en/latest/040_reverse_map.html#function-tracking)) pour updater la map à la place de regénérer (il serait possible de faire une cronjob pour automatiser les deux). Le script donné par Lmod serait préférable.
-* Certaines commandes sont exécutés à chaque fois qu'on exécute quelque chose, donc on ne devrait probablement pas les monitorer (en ordre dans lesquelles elles se terminent): 
+* Certaines commandes sont exécutés à chaque fois qu'on exécute quelque chose (peut-être seulement local, devrait testé sur la build-node), donc on ne devrait probablement pas les monitorer (en ordre dans lesquelles elles se terminent): 
     1. `wc -l`
     2. `tail -n1`
     3. `/cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/python2.7 /cvmfs/soft.computecanada.ca/gentoo/2020/usr/lib/python-exec/python2.7/hg id`
