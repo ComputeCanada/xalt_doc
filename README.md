@@ -25,26 +25,47 @@
     * Activé par défaut si un reverse map est trouvée (`--with-functionTracking=no` pour désactiver)
     * Plus lent (on doit linker 2 fois)
 * [Transmission des données](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#xalt-data-transmission)
-    * Fichier json &rarr; enregistré pour chaque utilisateur ou dans un endroit global, peut aussi séparer les types de résultats dans des dossiers différents
+    * Fichier json &rarr; enregistré pour chaque utilisateur ou dans un endroit global, peut aussi séparer les types de résultats dans des dossiers différents. Scripts permettant de transférer les fichiers .json dans une db MySQL, ce qui permetterait d'utiliser plus facilement avec Grafana? ([lien](https://xalt.readthedocs.io/en/latest/110_db.html))
     * Syslog &rarr; pas beaucoup d'informations (`--with-transmission=syslog`)
 * Quels sont les variables d'environnement qui devrait être monitorées?
+
+## Limitations venant du fait que les clusters ne sont pas modifiés
+### Limitations dûes à l'utilisation principale du mode `LD_PRELOAD`
+Le fait de seulement utiliser le mode `LD_PRELOAD` fait en sorte que seul les exécutables linkés dynamiquements peuvent être monitorés. Ainsi, si un module a été compilé de manière à ce que les exécutables soient statiques, il serait impossible de le monitorer sans le recompiler, soit pour que les exécutables soient dynamiques, soit en utilisant le wrapper de `ld` fourni par XALT pour injecter dans les exécutables le code permettant de monitorer. Il en est de même pour les exécutables créés par les usagers : s'ils sont dynamiques, on peut les monitorer automatiquement avec le mode `LD_PRELOAD`, sinon ils doivent être linkés avec le wrapper de `ld` fourni par XALT.
+
+Les limitations pour le monitoring des exécutables du système de base sont minimes, parce que la grande majorité sont dynamiques. En effet, seulement `sln` et `ldconfig` sont statiques. Vérifié sur StdEnv/2020 (seuls modules loadés) avec
+```
+for path in ${PATH//:/ }; do
+    find $path -exec file {} \; | grep -i static
+done
+```
+
+### Limitations venant du fait qu'on ne monitore pas les GPU
+Les informations fournies par le monitoring des GPU peuvent être trouvé dans l'[exemple d'output](output/gpu.txt).
 
 ## Notes
 * ~~On ne devrait probablement pas utiliser de reverse map, parce que le MODULEPATH peut être modifié et Lmod se fie au MODULEPATH pour créer la reverseMap~~ Les reverse maps de Lmod traversent tous les modulefiles et modifie le MODULEPATH. Pourrait aussi être utile pour Mii.
 * 2 moyens d'utiliser les reverse maps &rarr; regénérer une xalt_rmapT.json à chaque fois qu'on veut updater ou utiliser `$LMOD_DIR/update_lmod_system_cache_files` ([lien](https://xalt.readthedocs.io/en/latest/040_reverse_map.html#function-tracking)) pour updater la map à la place de regénérer (il serait possible de faire une cronjob pour automatiser les deux). Le script donné par Lmod serait préférable.
+* Certaines commandes sont exécutés à chaque fois qu'on exécute quelque chose, donc on ne devrait probablement pas les monitorer (en ordre dans lesquelles elles se terminent): 
+    1. `wc -l`
+    2. `tail -n1`
+    3. `/cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/python2.7 /cvmfs/soft.computecanada.ca/gentoo/2020/usr/lib/python-exec/python2.7/hg id`
+* XALT est en mode PRELOAD_ONLY si la variable XALT_PRELOAD_ONLY n'a pas la valeur "yes"
+* Le wrapper ld de XALT ne fonctionne pas localement sans faire de modification à la configuration courante (peut-être parce qu'on utilise deux wrappers pour `ld`?). Testé avec la commande `XALT_TRACING=link XALT_PRELOAD_ONLY=no gcc -static -o static_test test.c` ([message d'erreur](ld_error.txt))
 
 ## Options de build
-| Option                            | Lien                                                                                                                                           | Description                                                                             |
-|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
-| `--with-syshostConfig=`           | [Setting the Name of your Cluster](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#setting-the-name-of-your-cluster)         | Nom du cluster                                                                          |
-| `--with-cmdlineRecord=yes\|no`    | [Turning off command line tracking](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#turning-off-command-line-tracking)       | Est-ce qu'on enregistre aussi les commandes entrées par les usagers?                                           |
-| `--with-systemPath=`              | [Defining $PATH used by XALT programs](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#defining-path-used-by-xalt-programs)  | PATH utilisé par XALT                                                                   |
-| `--with-transmission=`            | [XALT data transmission](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#xalt-data-transmission)                             | Type de transmission des données (ex: fichiers json, syslog)                            |
-| `--with-trackScalarPrgms=yes\|no` | [Track MPI and/or Non-MPI executables](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#track-mpi-and-or-non-mpi-executables) | Monitorer tous les programmes ou seulement les programmes MPI qui ont plus d'une tâche  |
-| `--with-trackGPU=yes\|no`         | [Track GPU usage](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#track-gpu-usage)                                           | Monitorer l'utilisation des GPU NVIDIA                                                  |
-| `--with-functionTracking=yes\|no` | [Function Tracking](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#function-tracking)                                       | Monitorer les fonctions des librairies qui sont utilisées. Nécessite un reverse map     |
-| `--with-etcDir=`                  | [Function Tracking](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#function-tracking)                                       | Path du dossier contenant la reverse map                                                |
-
+| Option                                | Lien                                                                                                                                           | Description                                                                                                                                    |
+|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--with-syshostConfig=`               | [Setting the Name of your Cluster](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#setting-the-name-of-your-cluster)         | Nom du cluster                                                                                                                                 |
+| `--with-cmdlineRecord=yes\|no`        | [Turning off command line tracking](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#turning-off-command-line-tracking)       | Est-ce qu'on enregistre aussi les commandes entrées par les usagers?                                                                           |
+| `--with-systemPath=`                  | [Defining $PATH used by XALT programs](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#defining-path-used-by-xalt-programs)  | PATH utilisé par XALT                                                                                                                          |
+| `--with-transmission=`                | [XALT data transmission](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#xalt-data-transmission)                             | Type de transmission des données (ex: fichiers json, syslog)                                                                                   |
+| `–with-xaltFilePrefix=`               | [XALT data transmission](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#xalt-data-transmission)                             | Permet d'enregistrer les fichiers .json dans un endroit global plutôt que pour chaque utilisateur                                              |
+| `--with-trackScalarPrgms=yes\|no`     | [Track MPI and/or Non-MPI executables](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#track-mpi-and-or-non-mpi-executables) | Monitorer tous les programmes ou seulement les programmes MPI qui ont plus d'une tâche                                                         |
+| `--with-trackGPU=yes\|no`             | [Track GPU usage](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#track-gpu-usage)                                           | Monitorer l'utilisation des GPU NVIDIA                                                                                                         |
+| `--with-functionTracking=yes\|no`     | [Function Tracking](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#function-tracking)                                       | Monitorer les fonctions des librairies qui sont utilisées. Nécessite un reverse map                                                            |
+| `--with-etcDir=`                      | [Function Tracking](https://xalt.readthedocs.io/en/latest/020_site_configuration.html#function-tracking)                                       | Path du dossier contenant la reverse map                                                                                                       |
+| `--with-siteControlledPrefix=yes\|no` | [Site controlled XALT location](https://xalt.readthedocs.io/en/latest/050_install_and_test.html#site-controlled-xalt-location)                 | Permet de spécifier le dossier exact dans le prefix où XALT devrait être installé, ce qui permet alors d'avoir plusieurs versions d'installées |
 ## Liens utiles
 * Repo Github de XALT
     * [Root du repo](https://github.com/xalt/xalt)
@@ -68,4 +89,4 @@
 - [ ] Utiliser syslog plutôt que des fichiers .json?
     * Tester syslog localement
 - [ ] Trouver comment créer la reverse map
-
+- [ ] Vérifier les modules qui fournissent des exécutables statiques
