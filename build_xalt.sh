@@ -11,4 +11,4 @@ cd $XALT
 --with-functionTracking=yes		\
 --with-MySQL=no 			\
 --with-etcDir=$PREFIX/xalt/xalt/etc	\
---with-config=Config/test_config.py && make install
+--with-config=../test_config.py && make install

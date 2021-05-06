@@ -41,6 +41,12 @@ hostname_patterns = [
 # can optionally track the internal "import" that are used.
 
 path_patterns = [
+    # Executed after every command
+    ['SKIP',  r'.*\/hostname'],
+    ['SKIP',  r'.*\/wc'],
+    ['SKIP',  r'.*\/tail'],
+    ['SKIP',  r'.*\/usr\/bin\/python2.7'],
+
     ['PKGS',  r'.*\/R'],
     ['PKGS',  r'.*\/MATLAB'],
     ['PKGS',  r'.*\/python[0-9.]*'],
@@ -252,6 +258,7 @@ env_patterns = [
     [ 'SKIP', r'^MV2_.*'],
     [ 'SKIP', r'^LAUNCHER_JID=.*'],
     [ 'KEEP', r'^CC_CLUSTER=.*'],
+    [ 'KEEP', r'^HOSTNAME=.*'],
     [ 'KEEP', r'^LD=.*'],
     [ 'KEEP', r'^LOADEDMODULES=.*'],
     [ 'KEEP', r'^MKL.*'],
