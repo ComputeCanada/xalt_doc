@@ -1,0 +1,41 @@
+{
+    "crc": "0x60EF",
+    "resultT": {
+        "uuid": "cc056e06-8eab-4dff-9bc1-b1234b0ca673",
+        "link_program": "gcc",
+        "link_path": "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/gcc",
+        "build_user": "billy",
+        "build_epoch": "1620243004.3994",
+        "exec_path": "/home/billy/Documents/cq/xalt/a.out",
+        "hash_id": "a5d7353bff16df8ac8014a3d08bf68918b678272",
+        "wd": "/home/billy/Documents/cq/xalt",
+        "build_syshost": "computecanada"
+    },
+    "linkA": [
+        [
+            "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/lib64/libgcc_s.so.1",
+            "0"
+        ],
+        [
+            "/cvmfs/soft.computecanada.ca/gentoo/2020/lib64/libc-2.30.so",
+            "0"
+        ],
+        [
+            "/cvmfs/soft.computecanada.ca/gentoo/2020/lib64/ld-2.30.so",
+            "0"
+        ],
+        [
+            "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/lib64/libgcc_s.so.1",
+            "0"
+        ]
+    ],
+    "function": [
+        "",
+        "",
+        ""
+    ],
+    "link_line": [
+        "gcc",
+        "conftest.c"
+    ]
+}
