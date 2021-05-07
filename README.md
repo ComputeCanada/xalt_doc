@@ -29,6 +29,9 @@
     * Syslog &rarr; pas beaucoup d'informations (`--with-transmission=syslog`)
 * Quels sont les variables d'environnement qui devrait être monitorées?
 
+## Cache de Lmod
+
+
 ## Limitations venant du fait que les clusters ne sont pas modifiés
 ### Limitations dûes à l'utilisation principale du mode `LD_PRELOAD`
 Le fait de seulement utiliser le mode `LD_PRELOAD` fait en sorte que seul les exécutables linkés dynamiquements peuvent être monitorés. Ainsi, si un module a été compilé de manière à ce que les exécutables soient statiques, il serait impossible de le monitorer sans le recompiler, soit pour que les exécutables soient dynamiques, soit en utilisant le wrapper de `ld` fourni par XALT pour injecter dans les exécutables le code permettant de monitorer. Il en est de même pour les exécutables créés par les usagers : s'ils sont dynamiques, on peut les monitorer automatiquement avec le mode `LD_PRELOAD`, sinon ils doivent être linkés avec le wrapper de `ld` fourni par XALT.
@@ -39,6 +42,8 @@ for path in ${PATH//:/ }; do
     find $path -exec file {} \; | grep -i static
 done
 ```
+
+Il y a 47 modules uniques sur 550 (total trouvé avec module `module --show-hidden -t avail | grep "\/$" | wc -l`) qui fournissent des exécutables statiques (voir [unique_static_modules.json](static_modules/unique_static_modules.json)). Advenant la décision de modifier les clusters, seuls ces modules devront être recompilés avec le wrapper de `ld` fourni par XALT.
 
 ### Limitations venant du fait qu'on ne monitore pas les GPU
 Les informations fournies par le monitoring des GPU peuvent être trouvé dans l'[exemple d'output](output/gpu.txt).
@@ -93,7 +98,7 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
 - [ ] Trouver comment créer la reverse map
     - [X] Comprendre comment la xalt_rmapT fonctionne
     - [ ] Documenter le fonctionnement de la xalt_rmapT
-    - [ ] Tester le script d'update de cache de Lmod fonctionne
+    - [ ] Tester le script d'update de cache de Lmod
 - [X] Trouver les modules qui fournissent des exécutables statiques
     - [X] Faire une liste exhausive des modules qui fournissent des exécutables statiques
     - [X] Faire une liste (sans répétitions) des modules qui fournissent des exécutables statiques
