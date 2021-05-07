@@ -87,6 +87,19 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
 
 ## TODO
 - [ ] Utiliser syslog plutôt que des fichiers .json?
-    * Tester syslog localement
+    - [X] Tester les fichiers JSON pour chaque utilisateur
+    - [ ] Tester les fichiers JSON globaux
+    - [ ] Tester syslog localement
 - [ ] Trouver comment créer la reverse map
-- [ ] Vérifier les modules qui fournissent des exécutables statiques
+    - [X] Comprendre comment la xalt_rmapT fonctionne
+    - [ ] Documenter le fonctionnement de la xalt_rmapT
+    - [ ] Tester le script d'update de cache de Lmod fonctionne
+- [ ] Trouver les modules qui fournissent des exécutables statiques
+    - [X] Faire une liste exhausive des modules qui fournissent des exécutables statiques
+    - [ ] Faire une liste (sans répétitions) des modules qui fournissent des exécutables statiques
+    - [ ] Trouver le nombre réel de modules avec des exécutables statiques
+- [ ] Ajuster le fichier config.py selon les besoins
+    - [ ] Ajouter `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID` aux variables monitorées
+    - [ ] Comprendre le fonctionnement du monitoring des packages
+    - [ ] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
+- [ ] Faire fonctionner le wrapper de `ld`
