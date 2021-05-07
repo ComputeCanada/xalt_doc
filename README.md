@@ -70,6 +70,8 @@ $LMOD_DIR/update_lmod_system_cache_files -d /path/de/la/cache -t /path/du/timest
 | `-D`                | enable debug printing                                                        |
 | `-K`                | enable update xalt_rmapT cache file                                          |
 
+À noter que cette deuxième solution génère et update aussi un fichier de cache pour Lmod nommé spiderT.lua, qui a une taille d'environ 7MB.
+
 ## Limitations venant du fait que les clusters ne sont pas modifiés
 ### Limitations dûes à l'utilisation principale du mode `LD_PRELOAD`
 Le fait de seulement utiliser le mode `LD_PRELOAD` fait en sorte que seul les exécutables linkés dynamiquements peuvent être monitorés. Ainsi, si un module a été compilé de manière à ce que les exécutables soient statiques, il serait impossible de le monitorer sans le recompiler, soit pour que les exécutables soient dynamiques, soit en utilisant le wrapper de `ld` fourni par XALT pour injecter dans les exécutables le code permettant de monitorer. Il en est de même pour les exécutables créés par les usagers : s'ils sont dynamiques, on peut les monitorer automatiquement avec le mode `LD_PRELOAD`, sinon ils doivent être linkés avec le wrapper de `ld` fourni par XALT.
@@ -125,7 +127,6 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     * [Lmod](https://lmod.readthedocs.io/en/latest/index.html)
         * [spider](https://lmod.readthedocs.io/en/latest/136_spider.html)
         * [spider cache](https://lmod.readthedocs.io/en/latest/130_spider_cache.html)
-
 
 
 ## TODO
