@@ -1,0 +1,502 @@
+{
+    "hapgen2": {
+        "versions": [
+            "2.2.0",
+            "2.2.0"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "gtool": {
+        "versions": [
+            "0.7.5"
+        ],
+        "env": [
+            "nixpkgs/16.09"
+        ]
+    },
+    "freesurfer": {
+        "versions": [
+            "5.3.0",
+            "5.3.0"
+        ],
+        "env": [
+            "StdEnv/2020",
+            "nixpkgs/16.09"
+        ]
+    },
+    "simu": {
+        "versions": [
+            "0.9.4",
+            "0.9.4"
+        ],
+        "env": [
+            "nixpkgs/16.09:intel/2018.3",
+            "nixpkgs/16.09:gcc/7.3.0"
+        ]
+    },
+    "metal": {
+        "versions": [
+            "2011-03-25",
+            "2011-03-25",
+            "2011-03-25",
+            "2011-03-25",
+            "2011-03-25",
+            "2011-03-25"
+        ],
+        "env": [
+            "StdEnv/2020:gcc/9.3.0",
+            "nixpkgs/16.09:intel/2018.3",
+            "StdEnv/2020:intel/2020.1.217",
+            "nixpkgs/16.09:gcc/7.3.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "nixpkgs/16.09:intel/2016.4"
+        ]
+    },
+    "bedops": {
+        "versions": [
+            "2.4.39",
+            "2.4.35"
+        ],
+        "env": [
+            "StdEnv/2020",
+            "nixpkgs/16.09:gcc/6.4.0"
+        ]
+    },
+    "seqkit": {
+        "versions": [
+            "0.15.0",
+            "0.13.2"
+        ],
+        "env": [
+            "StdEnv/2020",
+            "StdEnv/2020"
+        ]
+    },
+    "bayescan": {
+        "versions": [
+            "2.1",
+            "2.1",
+            "2.1",
+            "2.1"
+        ],
+        "env": [
+            "nixpkgs/16.09:intel/2018.3",
+            "StdEnv/2020",
+            "nixpkgs/16.09:intel/2016.4",
+            "nixpkgs/16.09:gcc/5.4.0"
+        ]
+    },
+    "enso": {
+        "versions": [
+            "1.271"
+        ],
+        "env": [
+            "nixpkgs/16.09"
+        ]
+    },
+    "reapr": {
+        "versions": [
+            "1.0.18"
+        ],
+        "env": [
+            "nixpkgs/16.09:intel/2016.4"
+        ]
+    },
+    "go": {
+        "versions": [
+            "1.10.3",
+            "1.14.1",
+            "1.14.4"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020",
+            "nixpkgs/16.09"
+        ]
+    },
+    "muscle": {
+        "versions": [
+            "3.8.31",
+            "3.8.31",
+            "3.8.31",
+            "3.8.31"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/5.4.0",
+            "nixpkgs/16.09:intel/2016.4",
+            "nixpkgs/16.09:intel/2018.3",
+            "nixpkgs/16.09:gcc/7.3.0"
+        ]
+    },
+    "flashpca2": {
+        "versions": [
+            "d891160a"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/7.3.0"
+        ]
+    },
+    "tmhmm": {
+        "versions": [
+            "2.0c",
+            "2.0c"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "metageneannotator": {
+        "versions": [
+            "20080819",
+            "20080819"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "gcta": {
+        "versions": [
+            "1.26.0",
+            "1.26.0",
+            "1.26.0",
+            "1.26.0",
+            "1.26.0",
+            "1.26.0"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/5.4.0:openmpi/2.0.2",
+            "nixpkgs/16.09:intel/2018.3",
+            "StdEnv/2020:intel/2020.1.217",
+            "StdEnv/2020:gcc/9.3.0",
+            "nixpkgs/16.09:intel/2016.4:openmpi/2.0.2",
+            "nixpkgs/16.09:gcc/7.3.0"
+        ]
+    },
+    "crest": {
+        "versions": [
+            "2.10.1"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/7.3.0"
+        ]
+    },
+    "clang": {
+        "versions": [
+            "3.9.0",
+            "3.9.0",
+            "3.8.1"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "nixpkgs/16.09",
+            "nixpkgs/16.09"
+        ]
+    },
+    "metabat": {
+        "versions": [
+            "2.12.1"
+        ],
+        "env": [
+            "nixpkgs/16.09"
+        ]
+    },
+    "masurca": {
+        "versions": [
+            "3.2.4",
+            "3.2.7",
+            "3.3.0",
+            "3.2.8",
+            "3.2.6",
+            "3.3.0",
+            "4.0.3",
+            "4.0.3",
+            "3.2.7",
+            "3.2.4",
+            "4.0.1",
+            "3.2.6",
+            "4.0.1",
+            "3.2.8",
+            "3.4.1",
+            "3.4.1"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/5.4.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "nixpkgs/16.09:gcc/7.3.0",
+            "nixpkgs/16.09:gcc/7.3.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "StdEnv/2020:gcc/9.3.0",
+            "StdEnv/2020:gcc/9.3.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "StdEnv/2020:gcc/9.3.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "StdEnv/2020:gcc/9.3.0",
+            "nixpkgs/16.09:gcc/5.4.0",
+            "StdEnv/2020:gcc/9.3.0",
+            "StdEnv/2020:gcc/9.3.0"
+        ]
+    },
+    "autodock_vina": {
+        "versions": [
+            "1.1.2",
+            "1.1.2"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "plink": {
+        "versions": [
+            "1.9b_6.21-x86_64",
+            "2.00-10252019-avx2",
+            "2.00a2.3_x86_64",
+            "1.9b_5.2-x86_64",
+            "1.9b_4.1-x86_64",
+            "2.00-10252019-avx2"
+        ],
+        "env": [
+            "StdEnv/2020",
+            "nixpkgs/16.09",
+            "nixpkgs/16.09",
+            "nixpkgs/16.09",
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "pbsuite": {
+        "versions": [
+            "15.8.24",
+            "15.8.24"
+        ],
+        "env": [
+            "nixpkgs/16.09:intel/2016.4",
+            "StdEnv/2020:gcc/9.3.0"
+        ]
+    },
+    "delly": {
+        "versions": [
+            "0.7.8",
+            "0.8.5"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "frealign": {
+        "versions": [
+            "9.11",
+            "9.11",
+            "9.11"
+        ],
+        "env": [
+            "nixpkgs/16.09:intel/2018.3",
+            "nixpkgs/16.09:intel/2016.4:openmpi/2.0.2",
+            "nixpkgs/16.09:gcc/5.4.0:openmpi/2.0.2"
+        ]
+    },
+    "vault": {
+        "versions": [
+            "1.0.3"
+        ],
+        "env": [
+            "nixpkgs/16.09"
+        ]
+    },
+    "taxonkit": {
+        "versions": [
+            "0.6.2"
+        ],
+        "env": [
+            "StdEnv/2020"
+        ]
+    },
+    "fpc": {
+        "versions": [
+            "3.0.0",
+            "3.0.0"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "nixpkgs/16.09"
+        ]
+    },
+    "fastsimcoal2": {
+        "versions": [
+            "2.6.0.3",
+            "2.6.0.3"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "sambamba": {
+        "versions": [
+            "0.6.7",
+            "0.7.1",
+            "0.8.0"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "pdt": {
+        "versions": [
+            "3.25",
+            "3.25"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "nixpkgs/16.09"
+        ]
+    },
+    "tpp": {
+        "versions": [
+            "5.2.0"
+        ],
+        "env": [
+            "StdEnv/2020:gcc/9.3.0"
+        ]
+    },
+    "sspace-longread": {
+        "versions": [
+            "1-1",
+            "1-1"
+        ],
+        "env": [
+            "nixpkgs/16.09:intel/2016.4",
+            "nixpkgs/16.09:intel/2018.3"
+        ]
+    },
+    "nixpkgs": {
+        "versions": [
+            "16.09",
+            "16.09"
+        ],
+        "env": []
+    },
+    "alberta": {
+        "versions": [
+            "3.0.3"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/7.3.0"
+        ]
+    },
+    "wxwidgets": {
+        "versions": [
+            "3.1.1",
+            "3.1.1"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/7.3.0",
+            "nixpkgs/16.09:gcc/5.4.0"
+        ]
+    },
+    "pplacer": {
+        "versions": [
+            "1.1.alpha19",
+            "1.1.alpha19"
+        ],
+        "env": [
+            "StdEnv/2020",
+            "nixpkgs/16.09"
+        ]
+    },
+    "signalp": {
+        "versions": [
+            "4.1f",
+            "4.1f"
+        ],
+        "env": [
+            "StdEnv/2020",
+            "nixpkgs/16.09"
+        ]
+    },
+    "impute2": {
+        "versions": [
+            "2.3.2",
+            "2.3.2"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "admixture": {
+        "versions": [
+            "1.3.0",
+            "1.3.0"
+        ],
+        "env": [
+            "nixpkgs/16.09",
+            "StdEnv/2020"
+        ]
+    },
+    "energyplus": {
+        "versions": [
+            "9.3.0"
+        ],
+        "env": [
+            "StdEnv/2020"
+        ]
+    },
+    "minimac2": {
+        "versions": [
+            "2014.9.15"
+        ],
+        "env": [
+            "nixpkgs/16.09"
+        ]
+    },
+    "micmac": {
+        "versions": [
+            "1.0.beta13"
+        ],
+        "env": [
+            "nixpkgs/16.09:gcc/5.4.0"
+        ]
+    },
+    "sortmerna": {
+        "versions": [
+            "4.2.0"
+        ],
+        "env": [
+            "StdEnv/2020:gcc/9.3.0:openmpi/4.0.3"
+        ]
+    },
+    "mach": {
+        "versions": [
+            "1.0.18"
+        ],
+        "env": [
+            "nixpkgs/16.09"
+        ]
+    },
+    "gentoo": {
+        "versions": [
+            "2019",
+            "2020"
+        ],
+        "env": []
+    },
+    "corset": {
+        "versions": [
+            "1.09"
+        ],
+        "env": [
+            "StdEnv/2020"
+        ]
+    }
+}

@@ -94,10 +94,10 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [X] Comprendre comment la xalt_rmapT fonctionne
     - [ ] Documenter le fonctionnement de la xalt_rmapT
     - [ ] Tester le script d'update de cache de Lmod fonctionne
-- [ ] Trouver les modules qui fournissent des exécutables statiques
+- [X] Trouver les modules qui fournissent des exécutables statiques
     - [X] Faire une liste exhausive des modules qui fournissent des exécutables statiques
-    - [ ] Faire une liste (sans répétitions) des modules qui fournissent des exécutables statiques
-    - [ ] Trouver le nombre réel de modules avec des exécutables statiques
+    - [X] Faire une liste (sans répétitions) des modules qui fournissent des exécutables statiques
+    - [X] Trouver le nombre réel de modules avec des exécutables statiques &rarr; 47 (voir [unique_static_modules.json](unique_static_modules.json))
 - [ ] Ajuster le fichier config.py selon les besoins
     - [ ] Ajouter `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID` aux variables monitorées
     - [ ] Comprendre le fonctionnement du monitoring des packages
