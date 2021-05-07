@@ -31,6 +31,44 @@
 
 ## Cache de Lmod
 
+Lmod supporte plusieurs types de "cache". La xalt_rmapT qui peut être générée par Lmod est utilisée par XALT pour déterminer quelles librairies devraient être monitorées ainsi que pour associer les noms de modules aux paths qu'ils fournissent. Lorsqu'on génère la xalt_rmapT, on traverse tous les fichiers de module présent dans les dossiers spécifiés dans `$MODULEPATH`. Chaque dossier ajouté à `$MODULEPATH` dans les fichiers de module sera aussi traversé ([source](https://lmod.readthedocs.io/en/latest/136_spider.html#the-spider-tool)).
+
+### Structure générale de la xalt_rmapT
+```
+{
+    "reverseMapT":
+        "/path/vers/le/module1": "nom_du_module1/version(environnement)",
+        "/path/vers/le/module2": "nom_du_module2/version(environnement)",
+        ...
+    }
+    "xlibmap": [
+        "lib1.so",
+        "lib2.so",
+        ...
+    ]
+}
+```
+
+La xalt_rmapT peut être générée avec 
+```
+$LMOD_DIR/spider -o xalt_rmapT $MODULEPATH > xalt_rmapT.json
+```
+
+| Option           | Description                                                                      |
+|------------------|----------------------------------------------------------------------------------|
+| `-o outputStyle` | Le format du fichier voulu (voir `$LMOD_DIR/spider --help` pour plus de détails) |
+
+ou encore générée/updatée avec 
+```
+$LMOD_DIR/update_lmod_system_cache_files -d /path/de/la/cache -t /path/du/timestamp.txt -D -K $MODULEPATH
+```
+
+| Option              | Description                                                                  |
+|---------------------|------------------------------------------------------------------------------|
+| `-d <cacheDir>`     | location of Lmod cache directory (default: determine via `ml --config`)      |
+| `-t <timestamp.txt>`| location of Lmod cache timestamp file (default: determine via `ml --config`) |
+| `-D`                | enable debug printing                                                        |
+| `-K`                | enable update xalt_rmapT cache file                                          |
 
 ## Limitations venant du fait que les clusters ne sont pas modifiés
 ### Limitations dûes à l'utilisation principale du mode `LD_PRELOAD`
@@ -43,7 +81,7 @@ for path in ${PATH//:/ }; do
 done
 ```
 
-Il y a 47 modules uniques sur 550 (total trouvé avec module `module --show-hidden -t avail | grep "\/$" | wc -l`) qui fournissent des exécutables statiques (voir [unique_static_modules.json](static_modules/unique_static_modules.json)). Advenant la décision de modifier les clusters, seuls ces modules devront être recompilés avec le wrapper de `ld` fourni par XALT.
+Il y a 47 modules uniques sur 550 (total trouvé avec `module --show-hidden -t avail | grep "\/$" | wc -l`) qui fournissent des exécutables statiques (voir [unique_static_modules.json](static_modules/unique_static_modules.json)). Advenant la décision de modifier les clusters, seuls ces modules devront être recompilés avec le wrapper de `ld` fourni par XALT.
 
 ### Limitations venant du fait qu'on ne monitore pas les GPU
 Les informations fournies par le monitoring des GPU peuvent être trouvé dans l'[exemple d'output](output/gpu.txt).
@@ -95,12 +133,12 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [X] Tester les fichiers JSON pour chaque utilisateur
     - [ ] Tester les fichiers JSON globaux
     - [ ] Tester syslog localement
-- [ ] Trouver comment créer la reverse map
+- [X] Trouver comment créer la reverse map
     - [X] Comprendre comment la xalt_rmapT fonctionne
-    - [ ] Documenter le fonctionnement de la xalt_rmapT
-    - [ ] Tester le script d'update de cache de Lmod
+    - [X] Documenter le fonctionnement de la xalt_rmapT
+    - [X] Tester le script d'update de cache de Lmod
 - [X] Trouver les modules qui fournissent des exécutables statiques
-    - [X] Faire une liste exhausive des modules qui fournissent des exécutables statiques
+    - [X] Faire une liste exhaustive des modules qui fournissent des exécutables statiques
     - [X] Faire une liste (sans répétitions) des modules qui fournissent des exécutables statiques
     - [X] Trouver le nombre réel de modules avec des exécutables statiques &rarr; 47 (voir [unique_static_modules.json](static_modules/unique_static_modules.json))
 - [ ] Ajuster le fichier config.py selon les besoins
