@@ -44,10 +44,10 @@ hostname_patterns = [
 
 path_patterns = [
     # Executed after every command
-    ['SKIP',  r'.*\/bin\/hostname'],
-    ['SKIP',  r'.*\/bin\/wc'],
-    ['SKIP',  r'.*\/bin\/tail'],
-    ['SKIP',  r'.*\/usr\/bin\/python2.7'],
+    # ['SKIP',  r'.*\/bin\/hostname'],
+    # ['SKIP',  r'.*\/bin\/wc'],
+    # ['SKIP',  r'.*\/bin\/tail'],
+    # ['SKIP',  r'.*\/usr\/bin\/python2.7'],
 
     # Track packages
     ['PKGS',  r'.*\/R'],
