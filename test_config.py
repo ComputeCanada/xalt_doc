@@ -10,8 +10,10 @@ import sys
 # hostname_patterns
 
 hostname_patterns = [
-  ['KEEP', '.*']  # capture executables on all nodes!
+  ['KEEP', '.*']                              # capture executables on all nodes!
+  #['KEEP', '^[a-z]{3}[0-9][0-9][0-9]\..*']   # only capture compute nodes
   ]
+
 
 #------------------------------------------------------------
 # This "table" is use to filter executables by their path
@@ -42,14 +44,16 @@ hostname_patterns = [
 
 path_patterns = [
     # Executed after every command
-    ['SKIP',  r'.*\/hostname'],
-    ['SKIP',  r'.*\/wc'],
-    ['SKIP',  r'.*\/tail'],
+    ['SKIP',  r'.*\/bin\/hostname'],
+    ['SKIP',  r'.*\/bin\/wc'],
+    ['SKIP',  r'.*\/bin\/tail'],
     ['SKIP',  r'.*\/usr\/bin\/python2.7'],
 
+    # Track packages
     ['PKGS',  r'.*\/R'],
     ['PKGS',  r'.*\/MATLAB'],
     ['PKGS',  r'.*\/python[0-9.]*'],
+
     ['KEEP',  r'^\/usr\/bin\/cp'],
     ['KEEP',  r'^\/usr\/bin\/mv'],
     ['KEEP',  r'^\/usr\/bin\/gawk'],
@@ -68,6 +72,7 @@ path_patterns = [
     ['KEEP',  r'^\/bin\/bzip2'],
     ['KEEP',  r'^\/bin\/gzip'],
     ['KEEP',  r'^\/bin\/tar'],
+
     ['SKIP',  r'^\/usr\/.*'],
     ['SKIP',  r'^\/sbin\/.*'],
     ['SKIP',  r'^\/bin\/.*'],
@@ -87,7 +92,7 @@ path_patterns = [
     ['SKIP',  r'.*\/l\/pkg\/xalt\/'],
     ['SKIP',  r'.*\/l\/pkg\/lua\/'],
     ['SKIP',  r'.*\/l\/pkg\/lmod\/'],
-    ['SKIP',  r'^\/opt\/apps\/xalt\/.*'],
+    ['SKIP',  r'.*\/xalt\/.*'],
     ['SKIP',  r'^\/opt\/apps\/git\/.*'],
     ['SKIP',  r'^\/opt\/apps\/cmake\/.*'],
     ['SKIP',  r'^\/opt\/apps\/autotools\/.*'],
@@ -228,6 +233,22 @@ mpi_interval_array = [
 
 
 env_patterns = [
+    # These are monitored
+    [ 'KEEP', r'^CC_CLUSTER=.*'],
+    [ 'KEEP', r'^HOSTNAME=.*'],
+    [ 'KEEP', r'^LD=.*'],
+    [ 'KEEP', r'^LOADEDMODULES=.*'],
+    [ 'KEEP', r'^MKL.*'],
+    [ 'KEEP', r'^OFFLOAD.*'],
+    [ 'KEEP', r'^OMP.*'],
+    [ 'KEEP', r'^PATH=.*'],
+    [ 'KEEP', r'^PYTHON.*'],
+    [ 'KEEP', r'^R_.*'],
+    [ 'KEEP', r'^LAUNCHER_TSK_ID=.*'],
+    [ 'KEEP', r'^PYLAUNCHER_ENABLED=.*'],
+    [ 'KEEP', r'^_LMFILES_=.*'],
+
+    # These are not monitored
     [ 'SKIP', r'^MKLROOT=.*' ],
     [ 'SKIP', r'^MKL_DIR=.*' ],
     [ 'SKIP', r'^MKL_INCLUDE=.*' ],
@@ -257,19 +278,7 @@ env_patterns = [
     [ 'SKIP', r'^I_MPI_TMI_PROVIDER=.*'],
     [ 'SKIP', r'^MV2_.*'],
     [ 'SKIP', r'^LAUNCHER_JID=.*'],
-    [ 'KEEP', r'^CC_CLUSTER=.*'],
-    [ 'KEEP', r'^HOSTNAME=.*'],
-    [ 'KEEP', r'^LD=.*'],
-    [ 'KEEP', r'^LOADEDMODULES=.*'],
-    [ 'KEEP', r'^MKL.*'],
-    [ 'KEEP', r'^OFFLOAD.*'],
-    [ 'KEEP', r'^OMP.*'],
-    [ 'KEEP', r'^PATH=.*'],
-    [ 'KEEP', r'^PYTHON.*'],
-    [ 'KEEP', r'^R_.*'],
-    [ 'KEEP', r'^LAUNCHER_TSK_ID=.*'],
-    [ 'KEEP', r'^PYLAUNCHER_ENABLED=.*'],
-    [ 'KEEP', r'^_LMFILES_=.*'],
+    
   ]
 
 #------------------------------------------------------------

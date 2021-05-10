@@ -147,3 +147,4 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [ ] Comprendre le fonctionnement du monitoring des packages
     - [ ] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
 - [ ] Faire fonctionner le wrapper de `ld`
+- [ ] Regénérer la reverse map sans modules supplémentaires (sans XALT dans la liste)
