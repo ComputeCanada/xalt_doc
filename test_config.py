@@ -10,9 +10,9 @@ import sys
 # hostname_patterns
 
 hostname_patterns = [
-  ['KEEP', '.*']                              # capture executables on all nodes!
-  #['KEEP', '^[a-z]{3}[0-9][0-9][0-9]\..*']   # only capture compute nodes
-  ]
+    ['KEEP', '.*']                              # capture executables on all nodes!
+    #['KEEP', '^[a-z]{3}[0-9][0-9][0-9]\..*']   # only capture compute nodes
+    ]
 
 
 #------------------------------------------------------------
@@ -43,41 +43,38 @@ hostname_patterns = [
 # can optionally track the internal "import" that are used.
 
 path_patterns = [
-    # Executed after every command
-    # ['SKIP',  r'.*\/bin\/hostname'],
-    # ['SKIP',  r'.*\/bin\/wc'],
-    # ['SKIP',  r'.*\/bin\/tail'],
-    # ['SKIP',  r'.*\/usr\/bin\/python2.7'],
-
     # Track packages
     ['PKGS',  r'.*\/R'],
     ['PKGS',  r'.*\/MATLAB'],
     ['PKGS',  r'.*\/python[0-9.]*'],
 
-    ['KEEP',  r'^\/usr\/bin\/cp'],
-    ['KEEP',  r'^\/usr\/bin\/mv'],
-    ['KEEP',  r'^\/usr\/bin\/gawk'],
-    ['KEEP',  r'^\/usr\/bin\/sed'],
-    ['KEEP',  r'^\/usr\/bin\/perl'],
-    ['KEEP',  r'^\/usr\/bin\/grep'],
-    ['KEEP',  r'^\/usr\/bin\/bzip2'],
-    ['KEEP',  r'^\/usr\/bin\/gzip'],
-    ['KEEP',  r'^\/usr\/bin\/tar'],
-    ['KEEP',  r'^\/bin\/cp'],
-    ['KEEP',  r'^\/bin\/mv'],
-    ['KEEP',  r'^\/bin\/gawk'],
-    ['KEEP',  r'^\/bin\/sed'],
-    ['KEEP',  r'^\/bin\/perl'],
-    ['KEEP',  r'^\/bin\/grep'],
-    ['KEEP',  r'^\/bin\/bzip2'],
-    ['KEEP',  r'^\/bin\/gzip'],
-    ['KEEP',  r'^\/bin\/tar'],
+    # ['KEEP',  r'^\/usr\/bin\/cp'],
+    # ['KEEP',  r'^\/usr\/bin\/mv'],
+    # ['KEEP',  r'^\/usr\/bin\/gawk'],
+    # ['KEEP',  r'^\/usr\/bin\/sed'],
+    # ['KEEP',  r'^\/usr\/bin\/perl'],
+    # ['KEEP',  r'^\/usr\/bin\/grep'],
+    # ['KEEP',  r'^\/usr\/bin\/bzip2'],
+    # ['KEEP',  r'^\/usr\/bin\/gzip'],
+    # ['KEEP',  r'^\/usr\/bin\/tar'],
 
-    ['SKIP',  r'^\/usr\/.*'],
-    ['SKIP',  r'^\/sbin\/.*'],
-    ['SKIP',  r'^\/bin\/.*'],
-    ['SKIP',  r'^\/etc\/.*'],
-    ['SKIP',  r'^\/root\/.*'],
+    # Replace with absolute paths?
+    ['KEEP',  r'.*\/bin\/cp'],
+    ['KEEP',  r'.*\/bin\/mv'],
+    ['KEEP',  r'.*\/bin\/gawk'],
+    ['KEEP',  r'.*\/bin\/sed'],
+    ['KEEP',  r'.*\/bin\/perl'],
+    ['KEEP',  r'.*\/bin\/grep'],
+    ['KEEP',  r'.*\/bin\/bzip2'],
+    ['KEEP',  r'.*\/bin\/gzip'],
+    ['KEEP',  r'.*\/bin\/tar'],
+
+    # ['SKIP',  r'^\/cvmfs\/soft.computecanada.ca\/gentoo\/2020\/usr\/.*'],
+    # ['SKIP',  r'^\/sbin\/.*'],
+    # ['SKIP',  r'^\/bin\/.*'],
+    # ['SKIP',  r'^\/etc\/.*'],
+    # ['SKIP',  r'^\/root\/.*'],
+
     ['SKIP',  r'^\/opt\/intel\/.*'],
     ['SKIP',  r'^\/opt\/tacc\/bin\/.*'],
     ['SKIP',  r'^\/opt\/cray\/.*'],
@@ -88,7 +85,7 @@ path_patterns = [
     ['SKIP',  r'^\/opt\/apps\/lua\/.*'],
     ['SKIP',  r'^\/opt\/apps\/lmod\/.*'],
     ['SKIP',  r'^\/opt\/apps\/shell_startup_debug\/.*'],
-    ['SKIP',  r'^\/opt\/apps\/tacc_tips\/.*'],
+    # ['SKIP',  r'^\/opt\/apps\/tacc_tips\/.*'],
     ['SKIP',  r'.*\/l\/pkg\/xalt\/'],
     ['SKIP',  r'.*\/l\/pkg\/lua\/'],
     ['SKIP',  r'.*\/l\/pkg\/lmod\/'],
@@ -102,6 +99,8 @@ path_patterns = [
     ['SKIP',  r'^\/opt\/apps\/gcc[0-9][0-9_]*\/mvapich2\/.*'],
     ['SKIP',  r'^\/home1\/apps\/intel\/.*'],
     ['SKIP',  r'^\/opt\/apps\/gcc\/.*'],
+
+    # General paths to ignore
     ['SKIP',  r'.*\/git'],
     ['SKIP',  r'.*\/lua'],
     ['SKIP',  r'.*\/mpiCC'],
@@ -126,6 +125,11 @@ path_patterns = [
     ['SKIP',  r'.*\/CMakeTmp\/cmTryCompileExec[0-9][0-9]*'],
     ['SKIP',  r'.*\/CMakeTmp\/cmTC_[a-f0-9][a-f0-9]*'],
   ]
+
+# Remove tracking for these directories in these environments
+for dir in ['usr', 'sbin', 'bin', 'etc', 'root']:
+    for path in ['\/cvmfs\/soft.computecanada.ca\/gentoo\/2020', '\/cvmfs\/soft.computecanada.ca\/nix\/var\/nix\/profiles\/16.09']:
+        path_patterns.append(['SKIP', fr'{path}\/{dir}\/.*'])
 
 #------------------------------------------------------------
 # XALT samples almost all  executions (both MPI and scalar) 
