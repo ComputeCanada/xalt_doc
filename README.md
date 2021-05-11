@@ -162,7 +162,7 @@ mkdir ~/process_xalt && cd ~/process_xalt; python ~/xalt/xalt/sbin/conf_create.p
 ```
 mkdir ~/process_xalt/reverseMapD
 ```
-puis générer la reverse map selon la méthode choisie à la section [Structure générale de la xalt_rmapT](#Structure générale de la xalt_rmapT) \
+puis générer la reverse map selon la méthode choisie à la section [Structure générale de la xalt_rmapT](#structure-générale-de-la-xalt_rmapt) \
 4. Faire un cron job qui permet d'envoyer les JSON à la database. Le script doit être exécuté avec `root` ou un utilisateur aillant accès en lecture et écriture à tous les endroits où les fichiers JSON sont stockés. Exemple de script pour le cron job :
 ```
 #!/bin/bash
