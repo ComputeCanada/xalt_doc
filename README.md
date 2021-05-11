@@ -201,7 +201,7 @@ puis générer la reverse map selon la méthode choisie à la section [Structure
 - [ ] Utiliser syslog plutôt que des fichiers .json?
     - [X] Tester les fichiers JSON pour chaque utilisateur
     - [ ] Tester les fichiers JSON globaux
-    - [ ] Tester syslog localement
+    - [X] Tester syslog localement
 - [X] Trouver comment créer la reverse map
     - [X] Comprendre comment la xalt_rmapT fonctionne
     - [X] Documenter le fonctionnement de la xalt_rmapT
@@ -213,9 +213,10 @@ puis générer la reverse map selon la méthode choisie à la section [Structure
 - [ ] Ajuster le fichier config.py selon les besoins
     - [ ] Ajouter `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID` aux variables monitorées
     - [ ] Comprendre le fonctionnement du monitoring des packages
-    - [ ] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
+    - [X] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
 - [ ] Faire fonctionner le wrapper de `ld`
 - [ ] Regénérer la reverse map sans modules supplémentaires (sans XALT dans la liste)
 - [ ] Database MySQL
     - [X] Tester avec les fichiers json
     - [ ] Tester avec le syslog
+- [ ] Nettoyer le README.md
