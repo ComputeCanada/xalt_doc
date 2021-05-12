@@ -30,9 +30,8 @@ python $XALT_DIR/xalt/xalt/sbin/createDB.py --confFn  $XALT_ETC_DIR/xalt_<nom_du
 ```
 
 ## Connexion du client avec le serveur
-Les fichiers JSON sont seulement traités du côté client (on ajoute directement les données contenues dans les JSON à la database), alors que le syslog est traité du côté client (on convertit le syslog en .log) et du côté serveur (on ajoute les données contenues dans le .log à la database)
 
-L'avantage d'utiliser le syslog est qu'on peut recueillir plusieurs entrées de XALT dans un seul .log, ce qui diminue le nombre de fichiers créés. Cependant, le fait d'utiliser le syslog ajoute une certaine complexitée, puisqu'on crée un JSON, on l'envoie dans le syslog, on le récupère dans un .log, puis on l'ajoute à la base de données. Lorsqu'on utilise les fichiers JSON, on ne fait que créer le fichier, puis l'ajouter directement à la base de données.
+L'avantage d'utiliser le syslog est qu'on peut recueillir plusieurs entrées de XALT dans un seul .log, ce qui diminue le nombre de fichiers créés. Cependant, le fait d'utiliser le syslog ajoute une certaine complexitée, puisqu'on crée un JSON, on l'envoie dans le syslog du cluster, puis dans celui du serveur de la base de données, on le récupère dans un .log et on l'ajoute finalement à la base de données. Lorsqu'on utilise les fichiers JSON, on ne fait que créer le fichier, puis l'ajouter directement à la base de données.
 ### Prérequis :
 - mariadb-client
 - package python3 mysqlclient
