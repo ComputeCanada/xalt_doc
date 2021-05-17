@@ -1,0 +1,15 @@
+filebeat.prospectors:
+- input_type: log
+  document_type: xalt_log
+  paths:
+    - /var/log/xalt/*/*.json
+
+processors:
+- decode_json_fields:
+    fields: ["message"]
+    target: ""
+
+output.logstash:
+  codec.json:
+    pretty: true
+  hosts: ["192.168.0.140:5044"]
