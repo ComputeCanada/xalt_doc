@@ -1,18 +1,18 @@
-to_keep = ['@timestamp', '@version', 'libA', 'type']
+$KEEP = ['@timestamp', '@version', 'libA', 'type']
 
 def filter(event)
     flatten_libA(event)
     remove_fields(event)
+    return [event]
 end
 
 def flatten_libA(event)
     event.set('libA', event.get('libA').map! {|elem| elem[0]})
-    return event
 end
 
 def remove_fields(event)
     event.to_hash.each_key do |key|
-        if not to_keep.include?(key)
+        if not $KEEP.include?(key)
             event.remove(key)
         end
     end
