@@ -6,9 +6,10 @@
     * [Choix](docs/XALT.md#choix)
     * [Options de build](docs/XALT.md#options-de-build)
     * [Reverse map](docs/XALT.md#reverse-map)
-* [Notes sur la DB](docs/DB.md)
+* [Notes sur la DB MySQL](docs/DB.md)
     * [Création de la database](docs/DB.md#création-de-la-database)
     * [Connexion du client avec le serveur](docs/DB.md#connexion-du-client-avec-le-serveur)
+* [Notes sur le ELK stack](docs/ELK.md)
 * [Q&A](#questions/réponses)
 * [Limitations](#limitations-venant-du-fait-que-les-clusters-ne-sont-pas-modifiés)
 * [Notes générales](#notes)
@@ -75,9 +76,9 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
 
 
 ## TODO
-- [ ] Utiliser syslog plutôt que des fichiers .json?
+- [X] Utiliser syslog plutôt que des fichiers .json?
     - [X] Tester les fichiers JSON pour chaque utilisateur
-    - [ ] Tester les fichiers JSON globaux
+    - [X] Tester les fichiers JSON globaux
     - [X] Tester syslog localement
 - [X] Trouver comment créer la reverse map
     - [X] Comprendre comment la xalt_rmapT fonctionne
@@ -93,7 +94,7 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [X] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
 - [ ] Faire fonctionner le wrapper de `ld`
 - [ ] Regénérer la reverse map sans modules supplémentaires (sans XALT dans la liste)
-- [ ] Database MySQL
-    - [X] Tester avec les fichiers json
-    - [ ] Tester avec le syslog
+- [ ] ~~Database MySQL~~
+    - [X] ~~Tester avec les fichiers json~~
+    - [ ] ~~Tester avec le syslog~~
 - [X] Nettoyer le README[]().md
