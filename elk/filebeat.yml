@@ -1,11 +1,15 @@
 filebeat.prospectors:
 - input_type: log
   document_type: xalt_log
+  tags: ["xalt_log"]
   paths:
     - /var/log/xalt/*/*.json
 
 processors:
 - decode_json_fields:
+    when:
+        contains:
+            tags: xalt_log
     fields: ["message"]
     target: ""
 
