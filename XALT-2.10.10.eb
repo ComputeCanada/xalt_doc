@@ -1,5 +1,5 @@
 name = 'XALT'
-version = '2.10.4'
+version = '2.10.10'
 
 homepage = 'https://github.com/xalt/xalt'
 description = """XALT 2 is a tool to allow a site to track user executables
@@ -16,21 +16,21 @@ toolchain = SYSTEM
 # or use 'eb --try-amend=config_py=<path>'. " See
 # https://xalt.readthedocs.io/en/latest/030_site_filtering.html for
 # more information.
-config_py = None
+config_py = '/home/billy/Documents/cq/xalt/CC_config.py'
 
 # The name of the system must be specified via the 'syshost'
 # easyconfig parameter.  You can edit the easyconfig file, or use 'eb
 # --try-amend=syshost=<string>'.  See
 # https://xalt.readthedocs.io/en/latest/020_site_configuration.html
 # for more information.
-syshost = None
+syshost = 'env_var:CC_CLUSTER'
 
 # The XALT transmission method must be specified via the
 # 'transmission' easyconfig parameter.  You can edit the easyconfig
 # file, or use 'eb --try-amend=transmission=<string>'.  See
 # https://xalt.readthedocs.io/en/latest/020_site_configuration.html
 # for more information.
-transmission = None
+transmission = 'file'
 
 # Additional options
 executable_tracking = True
@@ -42,7 +42,7 @@ static_cxx = True
 
 source_urls = ['https://github.com/xalt/xalt/archive/']
 sources = [SOURCELOWER_TAR_GZ]
-checksums = ['0159620a2ecc8200ef56ea410fbfcb0c5389f09d6c4ebcc04a0584c617aad52e']
+checksums = ['06ccce451be8a7f67a4c2bf15c3c0340db798a2efecdc03a9d49b6ea9c726a3f']
 
 builddependencies = [
     ('cURL', '7.69.1'),
