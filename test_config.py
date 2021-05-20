@@ -66,9 +66,6 @@ path_patterns = [
     ['SKIP',  r'\/cvmfs\/soft.computecanada.ca\/gentoo\/2020\/root\/.*'],
     ['SKIP',  r'\/cvmfs\/soft.computecanada.ca\/nix\/store\/.*'],
 
-    # Replace with installation path
-    ['SKIP',  r'^\/home\/billy\/xalt\/.*'],
-
     # Track packages
     ['PKGS',  r'.*\/R'],
     ['PKGS',  r'.*\/MATLAB'],
