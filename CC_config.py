@@ -201,8 +201,8 @@ MPI_ALWAYS_RECORD = 128
 
 
 interval_array = [
-    [    0.0,              1.0    ],
-    [ 1800.0,              1.0    ],
+    [    0.0,              0.0001 ],
+    [ 1800.0,              0.01   ],
     [ 7200.0,              1.0    ],
     [ sys.float_info.max,  1.0    ]
 ]
@@ -214,8 +214,8 @@ interval_array = [
 # for both scalar and mpi programs.
 
 mpi_interval_array = [
-    [    0.0,              1.0    ],
-    [  900.0,              1.0    ],
+    [    0.0,              0.0001 ],
+    [  900.0,              0.01   ],
     [ 1800.0,              1.0    ],
     [ sys.float_info.max,  1.0    ]
 ]
@@ -290,7 +290,6 @@ env_patterns = [
     [ 'SKIP', r'^I_MPI_TMI_PROVIDER=.*'],
     [ 'SKIP', r'^MV2_.*'],
     [ 'SKIP', r'^LAUNCHER_JID=.*'],
-    
   ]
 
 #------------------------------------------------------------
