@@ -10,6 +10,7 @@
     * [Création de la database](docs/DB.md#création-de-la-database)
     * [Connexion du client avec le serveur](docs/DB.md#connexion-du-client-avec-le-serveur)
 * [Notes sur le ELK stack](docs/ELK.md)
+* [Étapes d'installation de XALT](docs/Install.md)
 * [Q&A](#questions/réponses)
 * [Limitations](#limitations-venant-du-fait-que-les-clusters-ne-sont-pas-modifiés)
 * [Notes générales](#notes)
@@ -89,7 +90,7 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [X] Faire une liste (sans répétitions) des modules qui fournissent des exécutables statiques
     - [X] Trouver le nombre réel de modules avec des exécutables statiques &rarr; 47 (voir [unique_static_modules.json](static_modules/unique_static_modules.json))
 - [ ] Ajuster le fichier config.py selon les besoins
-    - [ ] Ajouter `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID` aux variables monitorées
+    - [ ] ~~Ajouter `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID` aux variables monitorées~~ (déjà monitoré dans le champ `userT`)
     - [ ] Comprendre le fonctionnement du monitoring des packages
     - [X] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
 - [ ] Faire fonctionner le wrapper de `ld`
