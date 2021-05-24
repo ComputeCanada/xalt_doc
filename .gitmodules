@@ -1,3 +1,6 @@
 [submodule "xalt"]
 	path = xalt
 	url = https://github.com/xalt/xalt.git
+[submodule "xalt_fork"]
+	path = xalt_fork
+	url = git@github.com:JLague/xalt.git
