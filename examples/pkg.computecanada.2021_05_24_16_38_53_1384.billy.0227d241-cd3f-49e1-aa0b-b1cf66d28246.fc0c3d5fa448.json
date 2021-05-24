@@ -1,2 +1,8 @@
-{"crc":"0x5ADB","program":"python","xalt_run_uuid":"0227d241-cd3f-49e1-aa0b-b1cf66d28246","package_version":"3.8.2","package_name":"gzip","package_path":"/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/python/3.8.2/lib/python3.8/gzip.py"}
-
+{
+    "crc": "0x5ADB",
+    "program": "python",
+    "xalt_run_uuid": "0227d241-cd3f-49e1-aa0b-b1cf66d28246",
+    "package_version": "3.8.2",
+    "package_name": "gzip",
+    "package_path": "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/python/3.8.2/lib/python3.8/gzip.py"
+}
