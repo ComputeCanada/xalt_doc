@@ -1,4 +1,6 @@
 /var/log/xalt/*/*.json {
 	daily
 	maxage 1
+	nocreate
+    rotate 0
 }
