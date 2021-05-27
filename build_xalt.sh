@@ -8,7 +8,9 @@ cd $XALT
 ./configure --prefix=$PREFIX 		\
 --with-syshostConfig=env_var:CC_CLUSTER \
 --with-transmission=file 		\
---with-functionTracking=yes		\
---with-MySQL=yes 			\
---with-etcDir=$PREFIX/xalt/xalt/etc	\
---with-config=../test_config.py && make install
+--with-xaltFilePrefix=/var/log/xalt	\
+--with-functionTracking=no		\
+--with-MySQL=no 			\
+--with-config=../CC_config.py && make install
+
+#--with-etcDir=/home/billy/Documents/cq/xalt/reverseMapD	\
