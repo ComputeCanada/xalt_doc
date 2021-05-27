@@ -89,13 +89,14 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [X] Faire une liste exhaustive des modules qui fournissent des exécutables statiques
     - [X] Faire une liste (sans répétitions) des modules qui fournissent des exécutables statiques
     - [X] Trouver le nombre réel de modules avec des exécutables statiques &rarr; 47 (voir [unique_static_modules.json](static_modules/unique_static_modules.json))
-- [ ] Ajuster le fichier config.py selon les besoins
-    - [ ] ~~Ajouter `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID` aux variables monitorées~~ (déjà monitoré dans le champ `userT`)
-    - [ ] Comprendre le fonctionnement du monitoring des packages
+- [X] Ajuster le fichier config.py selon les besoins
+    - [X] ~~Ajouter `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID` aux variables monitorées~~ (déjà monitoré dans le champ `userT`)
+    - [X] Comprendre le fonctionnement du monitoring des packages
     - [X] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
-- [ ] Faire fonctionner le wrapper de `ld`
-- [ ] Regénérer la reverse map sans modules supplémentaires (sans XALT dans la liste)
-- [ ] ~~Database MySQL~~
-    - [X] ~~Tester avec les fichiers json~~
-    - [ ] ~~Tester avec le syslog~~
-- [X] Nettoyer le README[]().md
+- [X] Faire fonctionner le wrapper de `ld`
+- [X] Regénérer la reverse map sans modules supplémentaires (sans XALT dans la liste)
+- [ ] Faire fonctionner le monitoring des containers Singularity
+- [X] Récuperer et parser correctement les trois types de records
+    - [X] run (le plus essentiel)
+    - [X] link (peut pas désactiver sans modifications au code, mais peut ne pas parser)
+    - [X] pkg ~~(la quantité de records est très haute, on devrait peut-être laisser tomber celui-là)~~ Les pourcentages sont aussi applicables pour les packages, donc les entrées ne sont pas toutes loggées
