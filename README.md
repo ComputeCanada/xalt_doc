@@ -100,3 +100,11 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [X] run (le plus essentiel)
     - [X] link (peut pas désactiver sans modifications au code, mais peut ne pas parser)
     - [X] pkg ~~(la quantité de records est très haute, on devrait peut-être laisser tomber celui-là)~~ Les pourcentages sont aussi applicables pour les packages, donc les entrées ne sont pas toutes loggées
+- [ ] Faire des exemples
+    - [ ] avec du JIT
+    - [ ] dans une venv
+    - [ ] avec un conteneur Singularity
+- [ ] Faire fonctionner la recette EB
+    - [X] Ajouter l'option --with-xaltFilePrefix à la recette
+    - [ ] Ajouter une exemple d'erreur de `undefined reference to`/`GLIBC_PRIVATE` dans le repo
+    - [ ] Régler le problème précédent
