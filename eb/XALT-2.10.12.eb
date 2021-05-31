@@ -9,14 +9,14 @@ description = """XALT 2 is a tool to allow a site to track user executables
   also track package use by R, MATLAB or Python. It tracks both MPI and
   non-MPI programs."""
 
-toolchain = {'name': 'GCCcore', 'version': '9.3.0'}
+toolchain = SYSTEM
 
 # The location of XALT configuration file must be specified via
 # 'config_py' easyconfig parameter.  You can edit the easyconfig file,
 # or use 'eb --try-amend=config_py=<path>'. " See
 # https://xalt.readthedocs.io/en/latest/030_site_filtering.html for
 # more information.
-config_py = '/home/billy/Documents/cq/xalt/CC_config.py'
+config_py = '/home/jlague/xalt_doc/CC_config.py'
 
 # The name of the system must be specified via the 'syshost'
 # easyconfig parameter.  You can edit the easyconfig file, or use 'eb
@@ -37,9 +37,9 @@ executable_tracking = True
 gpu_tracking = None
 logging_url = None
 mysql = False
-file_prefix = '/var/log/xalt'
+# file_prefix = '/var/log/xalt'
 scalar_sampling = True
-static_cxx = True
+static_cxx = False
 
 source_urls = ['https://github.com/xalt/xalt/archive/']
 sources = [SOURCELOWER_TAR_GZ]
