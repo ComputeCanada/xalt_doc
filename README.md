@@ -95,7 +95,7 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [X] Comprendre le fonctionnement des paths à monitorer (`SKIP` et `KEEP`, ordre des fichiers binaires vs les dossiers)
 - [X] Faire fonctionner le wrapper de `ld`
 - [X] Regénérer la reverse map sans modules supplémentaires (sans XALT dans la liste)
-- [ ] Faire fonctionner le monitoring des containers Singularity
+- [X] Faire fonctionner le monitoring des containers Singularity
 - [X] Récuperer et parser correctement les trois types de records
     - [X] run (le plus essentiel)
     - [X] link (peut pas désactiver sans modifications au code, mais peut ne pas parser)
@@ -104,7 +104,17 @@ Les informations fournies par le monitoring des GPU peuvent être trouvé dans l
     - [ ] avec du JIT
     - [ ] dans une venv
     - [ ] avec un conteneur Singularity
-- [ ] Faire fonctionner la recette EB
+- [X] Faire fonctionner la recette EB
     - [X] Ajouter l'option --with-xaltFilePrefix à la recette
-    - [ ] Ajouter une exemple d'erreur de `undefined reference to`/`GLIBC_PRIVATE` dans le repo
-    - [ ] Régler le problème précédent
+    - [ ] ~~Ajouter une exemple d'erreur de `undefined reference to`/`GLIBC_PRIVATE` dans le repo~~
+    - [X] Régler le problème précédent
+- [X] Faire des clusters avec MC pour tester XALT
+    - [X] Faire cluster standard
+        - [X] Initialiser le cluster avec MC
+        - [X] Installer XALT avec la recette EB
+        - [X] Installer et configurer Filebeat
+        - [X] Configurer logrotate pour effacer les vieux logs
+    - [X] Faire un ELK cluster
+        - [X] Initaliser le cluster avec MC
+        - [X] Installer et configurer Kibana
+        - [X] Installer et configurer Logstash
