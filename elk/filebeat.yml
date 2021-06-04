@@ -1,9 +1,19 @@
 filebeat.prospectors:
 - input_type: log
   document_type: xalt_log
-  tags: ["xalt_log"]
+  tags: ["xalt_log", "run"]
   paths:
-    - /var/log/xalt/*/*.json
+    - /var/log/xalt/*/run.*.json
+- input_type: log
+  document_type: xalt_log
+  tags: ["xalt_log", "link"]
+  paths:
+    - /var/log/xalt/*/link.*.json
+- input_type: log
+  document_type: xalt_log
+  tags: ["xalt_log", "pkg"]
+  paths:
+    - /var/log/xalt/*/pkg.*.json
 
 processors:
 - decode_json_fields:
@@ -16,4 +26,5 @@ processors:
 output.logstash:
   codec.json:
     pretty: false
-  hosts: ["192.168.0.140:5044"]
+  hosts: ["localhost:5044"]
+  #hosts: ["192.168.0.140:5044"]
