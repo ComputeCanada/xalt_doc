@@ -11,14 +11,18 @@ prepend_path("LD_PRELOAD",    pathJoin(root, "lib64/libxalt_init.so"))
 prepend_path("COMPILER_PATH", pathJoin(root, "bin"))
 
 setenv("XALT_DIR", root)
-setenv("XALT_ETC_DIR", pathJoin(root, "etc"))
+-- setenv("XALT_ETC_DIR", pathJoin(root, "etc"))
+setenv("XALT_ETC_DIR", "/home/billy/Documents/cq/xalt/reverseMapD")
 setenv("XALT_EXECUTABLE_TRACKING", "yes")
 setenv("XALT_GPU_TRACKING", "no")
 setenv("XALT_SCALAR_SAMPLING", "yes")
+setenv("XALT_FUNCTION_TRACKING", "yes")
 
 -- Uncomment these two lines to use XALT inside Singularity containers
 setenv("SINGULARITYENV_LD_PRELOAD", pathJoin(root,"lib64/libxalt_init.so"))
 prepend_path("SINGULARITY_BINDPATH", root)
+
+prepend_path("PYTHONPATH", pathJoin(root, "site_packages"))
 
 ------------------------------------------------------------
 -- Only set this in production not for testing!!!
