@@ -15,6 +15,7 @@
     * Syslog &rarr; pas beaucoup d'informations (`--with-transmission=syslog`)
 * Quels sont les variables d'environnement qui devrait être monitorées?
     * Au moins `$USER`, `$HOSTNAME` et `$SLURM_JOB_ID`
+* Le nombre de CPUs, GPUs et threads reportés par XALT est celui demandé par l'utilisateur plutôt celui qui a réellement été utilisé. Il n'est donc pas très utile de garder ces informations dans l'index ES.
 
 # Options de build
 | Option                                | Lien                                                                                                                                           | Description                                                                                                                                    |
