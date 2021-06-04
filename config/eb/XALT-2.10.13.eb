@@ -1,5 +1,5 @@
 name = 'XALT'
-version = '2.10.12'
+version = '2.10.13'
 
 homepage = 'https://github.com/xalt/xalt'
 description = """XALT 2 is a tool to allow a site to track user executables
@@ -37,7 +37,7 @@ executable_tracking = True
 gpu_tracking = None
 logging_url = None
 mysql = False
-# file_prefix = '/var/log/xalt'
+file_prefix = '/var/log/xalt'
 scalar_sampling = True
 static_cxx = False
 
@@ -48,7 +48,6 @@ checksums = ['913c22f2bb4845aaaf456d5b5d9d5ed5f6f57cca9715465a0313337debe8aefb']
 builddependencies = [
     ('cURL', '7.69.1'),
     ('flex', '2.6.4'),
-    ('util-linux', '2.33.2'),
 ]
 
 osdependencies = [

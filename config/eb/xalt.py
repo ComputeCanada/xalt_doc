@@ -170,12 +170,6 @@ class EB_XALT(ConfigureMake):
         """Custom guesses for environment variables"""
         return {'COMPILER_PATH': 'bin',
                 'PATH': 'bin'}
-    
-    def post_install_step(self):
-        super(EB_XALT, self).post_install_step()
-
-        if self.cfg['file_prefix']:
-            run_cmd(os.path.join(self.installdir, 'sbin/create_xalt_directories.sh'))
 
     def sanity_check_step(self):
         """Custom sanity check"""
