@@ -43,7 +43,7 @@ static_cxx = False
 
 source_urls = ['https://github.com/xalt/xalt/archive/']
 sources = [SOURCELOWER_TAR_GZ]
-checksums = ['913c22f2bb4845aaaf456d5b5d9d5ed5f6f57cca9715465a0313337debe8aefb']
+checksums = ['3bb2d6704e036b1ff98f510e9ac255003036e601d9924045a2d99170535ee3a7']
 
 builddependencies = [
     ('cURL', '7.69.1'),
