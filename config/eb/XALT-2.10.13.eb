@@ -1,5 +1,5 @@
 name = 'XALT'
-version = '2.10.13'
+version = '2.10.14'
 
 homepage = 'https://github.com/xalt/xalt'
 description = """XALT 2 is a tool to allow a site to track user executables
@@ -16,7 +16,7 @@ toolchain = SYSTEM
 # or use 'eb --try-amend=config_py=<path>'. " See
 # https://xalt.readthedocs.io/en/latest/030_site_filtering.html for
 # more information.
-config_py = '/home/jlague/xalt_doc/CC_config.py'
+config_py = '/home/billy/Documents/cq/xalt/config/xalt/CC_config.py'
 
 # The name of the system must be specified via the 'syshost'
 # easyconfig parameter.  You can edit the easyconfig file, or use 'eb
@@ -55,6 +55,10 @@ osdependencies = [
     ('coreutils'),
     ('libelf-dev', 'elfutils-libelf-devel'),
     OS_PKG_OPENSSL_DEV,
+]
+
+postinstallcmds = [
+    "patchelf --remove-rpath %(installdir)s/lib64/{libxalt_init.so,libcrcFast.so}",
 ]
 
 moduleclass = 'lib'
