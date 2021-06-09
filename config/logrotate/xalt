@@ -2,5 +2,5 @@
 	daily
 	maxage 1
 	nocreate
-    rotate 0
+	rotate 0
 }
