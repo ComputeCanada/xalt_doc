@@ -1,29 +1,33 @@
-# Installation de XALT
+# Installation
 
 ## Préparation
+
+Si ce n'est pas déjà fait, cloner le dépôt.
+
 ```
-git clone --recursive git@github.com:JLague/xalt_doc.git
-cd xalt_doc
+git clone https://github.com/JLague/xalt_doc.git && cd xalt_doc
 ```
 
 ## Installation de XALT
 
 ```
-eb XALT-2.10.10.eb
+sudo yum install libuuid-devel
+eb XALT-2.10.15.eb --try-amend=config_py=/abs/path/to/config.py \
+    --try-amend=syshost=env_var:CC_CLUSTER \
+    --try-amend=transmission=file \
+    --try-amend=file_prefix=/var/log/xalt
+patch /path/to/modulefile < $(git rev-parse --show-toplevel)/module_preload.patch
 ```
-
-1. Modifier le prefix d'installation et le fichier de configuration dans le fichier [build_xalt.sh](../build_xalt.sh) et l'exécuter.
 
 ## Configuration de Filebeat
 
-1. Copier le fichier de configuration de logrotate [xalt](../elk/logrotate.d/xalt) dans `/etc/logrotate.d`
+Copier le fichier
 
 ```
-cp elk/logrotate.d/xalt /etc/logrotate.d
+sudo cp $(git rev-parse --show-toplevel)/config/logrotate/xalt /etc/logrotate.d/
 ```
 
-2. Ajouter le contenu de [filebeat.yml](../elk/filebeat.yml) à `/etc/filebeat/filebeat.yml`
-3. Redémarrer Filebeat
+Ajouter le contenu de [filebeat.yml](../config/filebeat/filebeat.yml) à `/etc/filebeat/filebeat.yml`, puis redémarrer Filebeat.
 
 ```
 systemctl restart filebeat
@@ -31,7 +35,7 @@ systemctl restart filebeat
 
 ## Configuration de Logstash
 
-1. Ajouter [xalt.conf](../elk/logstash/xalt.conf) aux fichiers de configuration Logstash
+1. Ajouter [xalt.conf](../config/logstash/xalt.conf) aux fichiers de configuration Logstash
 
 
 
