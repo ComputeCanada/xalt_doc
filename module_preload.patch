@@ -1,0 +1,14 @@
+--- a/2.10.15.lua	2021-06-09 11:09:30.702633111 -0400
++++ b/2.10.15.lua	2021-06-09 11:12:22.645624023 -0400
+@@ -29,4 +29,5 @@
+ conflict("xalt")
+ 
++prepend_path("LD_PRELOAD", pathJoin(root, "lib64/libxalt_init.so"))
+ prepend_path("COMPILER_PATH", pathJoin(root, "bin"))
+ prepend_path("PATH", pathJoin(root, "bin"))
+@@ -40,4 +41,5 @@
+ setenv("XALT_GPU_TRACKING", "no")
+ setenv("XALT_SCALAR_SAMPLING", "yes")
++setenv("XALT_PRELOAD_ONLY", "no")
+ prepend_path("SINGULARITY_BINDPATH", root)
+ prepend_path("SINGULARITYENV_LD_PRELOAD", pathJoin(root, "lib64/libxalt_init.so"))
