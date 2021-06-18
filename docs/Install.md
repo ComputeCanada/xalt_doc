@@ -8,7 +8,7 @@ If the path to the XALT `ld` wrapper is found before the real `ld` (or another `
 
 ## Activate XALT tracking
 
-There are several ways XALT can be activated. The simplest one is by using a module that sets the necessary environment variables when loaded, but the bare minimum for XALT to function are `XALT_EXECUTABLE_TRACKING` set to `yes` and the path `<XALT_DIR>/lib64/libxalt_init.so` in the `LD_PRELOAD` environment variable variable. Here are some examples of ways to activate XALT on an opt-in and opt-out basis.
+There are several ways XALT can be activated. The simplest one is by using a module that sets the necessary environment variables when loaded, but the bare minimum for XALT to function are `XALT_EXECUTABLE_TRACKING` set to `yes` and the path `<XALT_DIR>/lib64/libxalt_init.so` in the `LD_PRELOAD` environment variable. Here are some examples of ways to activate XALT on an opt-in and opt-out basis.
 
 ### Opt-in
 
