@@ -28,4 +28,13 @@ Aucune config. On popule les indexes avec Logstash et on va chercher les infos a
 
 ## Kibana
 
+Exemple de tableau de bord sur Kibana :
+
+![Exemple de tableau de bord sur Kibana](../examples/kibana.png)
+
+
+## Grafana
+
+Exemple de tableau de bord sur Grafana :
+
 ![Exemple de tableau de bord sur Grafana](../examples/grafana_es.png)
