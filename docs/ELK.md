@@ -7,19 +7,19 @@
 ## JSON
 
 * Enregistrés dans des dossiers sous `/var/log/xalt/`
-* Les anciens fichiers JSON sont effacés avec logrotate ([config](../elk/logrotate.d/xalt))
+* Les anciens fichiers JSON sont effacés avec logrotate ([config](../config/logrotate/xalt))
 
 ## Filebeat
 
-[Fichier de configuration pour Filebeat](../elk/filebeat.yml)
+[Fichier de configuration pour Filebeat](../config/filebeat/filebeat.yml)
 
 ## Logstash
 
 ### Liste des champs qui sont conservés
 * libA (aplati)
 
-[Fichier de configuration pour Logstash](../elk/logstash/xalt.conf) \
-[Filtre Ruby pour Logstash](../elk/logstash/xalt_filter.rb)
+[Fichier de configuration pour Logstash](../config/logstash/xalt.conf) \
+[Filtre Ruby pour Logstash](../config/logstash/xalt_filter.rb)
 
 ## Elasticsearch
 
